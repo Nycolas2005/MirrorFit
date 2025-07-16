@@ -1,0 +1,12 @@
+{
+  "name": "mirrorfit-frontend",
+  "version": "1.0.0",
+  "description": "Frontend do MirrorFit - Provador Virtual com IA",
+  "scripts": {
+    "start": "http-server -p 8080 -c-1",
+    "dev": "http-server -p 8080 -c-1 -o"
+  },
+  "devDependencies": {
+    "http-server": "^14.1.1"
+  }
+}

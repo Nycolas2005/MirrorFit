@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MirrorFit - Provador Virtual</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <h1 class="logo">MirrorFit</h1>
+            <p class="tagline">Seu provador virtual inteligente</p>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="container">
+            <section class="upload-section">
+                <h2>Faça upload da sua foto</h2>
+                <div class="upload-area" id="uploadArea">
+                    <div class="upload-content">
+                        <svg class="upload-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                            <polyline points="7,10 12,15 17,10"/>
+                            <line x1="12" y1="15" x2="12" y2="3"/>
+                        </svg>
+                        <p>Clique aqui ou arraste sua foto</p>
+                        <small>Formatos aceitos: JPG, PNG (máx. 5MB)</small>
+                    </div>
+                    <input type="file" id="photoInput" accept="image/*" hidden>
+                </div>
+                <div class="photo-preview" id="photoPreview" style="display: none;">
+                    <img id="previewImage" alt="Foto carregada">
+                    <button class="remove-photo" id="removePhoto">×</button>
+                </div>
+            </section>
+
+            <section class="clothing-selection">
+                <h2>Escolha suas roupas</h2>
+                
+                <div class="clothing-category">
+                    <h3>Camisetas</h3>
+                    <div class="clothing-grid">
+                        <div class="clothing-item" data-type="shirt" data-id="shirt1">
+                            <div class="clothing-image">
+                                <img src="images/camisa-branca.jpg" alt="Camiseta Básica Branca" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTUwIiBoZWlnaHQ9IjE1MCIgdmlld0JveD0iMCAwIDE1MCAxNTAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIxNTAiIGhlaWdodD0iMTUwIiBmaWxsPSIjZjVmNWY1Ii8+Cjx0ZXh0IHg9Ijc1IiB5PSI3NSIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjE0IiBmaWxsPSIjNjY2IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkeT0iLjNlbSI+Q2FtaXNldGEgQnJhbmNhPC90ZXh0Pgo8L3N2Zz4='">
+                            </div>
+                            <div class="clothing-info">
+                                <p class="clothing-name">Camiseta Básica Branca</p>
+                                <span class="price">R$ 49,90</span>
+                            </div>
+                        </div>
+                        <div class="clothing-item" data-type="shirt" data-id="shirt2">
+                            <div class="clothing-image">
+                                <img src="images/camisa-preta.jpeg" alt="Camiseta Preta Estampada" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTUwIiBoZWlnaHQ9IjE1MCIgdmlld0JveD0iMCAwIDE1MCAxNTAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIxNTAiIGhlaWdodD0iMTUwIiBmaWxsPSIjMzMzIi8+Cjx0ZXh0IHg9Ijc1IiB5PSI3NSIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjE0IiBmaWxsPSIjZmZmIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkeT0iLjNlbSI+Q2FtaXNldGEgUHJldGE8L3RleHQ+Cjwvc3ZnPg=='">
+                            </div>
+                            <div class="clothing-info">
+                                <p class="clothing-name">Camiseta Preta Estampada</p>
+                                <span class="price">R$ 59,90</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="clothing-category">
+                    <h3>Calças e Bermudas</h3>
+                    <div class="clothing-grid">
+                        <div class="clothing-item" data-type="pants" data-id="pants1">
+                            <div class="clothing-image">
+                                <img src="images/calça-preta.jpg" alt="Calça Jeans Preta" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTUwIiBoZWlnaHQ9IjE1MCIgdmlld0JveD0iMCAwIDE1MCAxNTAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIxNTAiIGhlaWdodD0iMTUwIiBmaWxsPSIjMjIyIi8+Cjx0ZXh0IHg9Ijc1IiB5PSI3NSIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjE0IiBmaWxsPSIjZmZmIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkeT0iLjNlbSI+Q2Fsw6dhIFByZXRhPC90ZXh0Pgo8L3N2Zz4='">
+                            </div>
+                            <div class="clothing-info">
+                                <p class="clothing-name">Calça Jeans Preta</p>
+                                <span class="price">R$ 89,90</span>
+                            </div>
+                        </div>
+                        <div class="clothing-item" data-type="shorts" data-id="shorts1">
+                            <div class="clothing-image">
+                                <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTUwIiBoZWlnaHQ9IjE1MCIgdmlld0JveD0iMCAwIDE1MCAxNTAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIxNTAiIGhlaWdodD0iMTUwIiBmaWxsPSIjZDRiODk2Ii8+Cjx0ZXh0IHg9Ijc1IiB5PSI3NSIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjE0IiBmaWxsPSIjNjY2IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkeT0iLjNlbSI+QmVybXVkYSBCZWdlPC90ZXh0Pgo8L3N2Zz4=" alt="Bermuda Cargo Bege">
+                            </div>
+                            <div class="clothing-info">
+                                <p class="clothing-name">Bermuda Cargo Bege</p>
+                                <span class="price">R$ 69,90</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="clothing-category">
+                    <h3>Tênis</h3>
+                    <div class="clothing-grid">
+                        <div class="clothing-item" data-type="shoes" data-id="shoes1">
+                            <div class="clothing-image">
+                                <img src="images/air-force-1.jpg" alt="Air Force 1 Branco" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTUwIiBoZWlnaHQ9IjE1MCIgdmlld0JveD0iMCAwIDE1MCAxNTAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIxNTAiIGhlaWdodD0iMTUwIiBmaWxsPSIjZmZmIiBzdHJva2U9IiNkZGQiLz4KPHRleHQgeD0iNzUiIHk9Ijc1IiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTQiIGZpbGw9IiM2NjYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGR5PSIuM2VtIj5BaXIgRm9yY2UgMTwvdGV4dD4KPHN2Zz4='">
+                            </div>
+                            <div class="clothing-info">
+                                <p class="clothing-name">Air Force 1 Branco</p>
+                                <span class="price">R$ 199,90</span>
+                            </div>
+                        </div>
+                        <div class="clothing-item" data-type="shoes" data-id="shoes2">
+                            <div class="clothing-image">
+                                <img src="images/air-force-1-preto.jpeg" alt="Air Force 1 Preto" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTUwIiBoZWlnaHQ9IjE1MCIgdmlld0JveD0iMCAwIDE1MCAxNTAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIxNTAiIGhlaWdodD0iMTUwIiBmaWxsPSIjMzMzIi8+Cjx0ZXh0IHg9Ijc1IiB5PSI3NSIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjE0IiBmaWxsPSIjZmZmIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkeT0iLjNlbSI+QWlyIEZvcmNlIFByZXRvPC90ZXh0Pgo8L3N2Zz4='">
+                            </div>
+                            <div class="clothing-info">
+                                <p class="clothing-name">Air Force 1 Preto</p>
+                                <span class="price">R$ 179,90</span>
+                            </div>
+                        </div>
+                        <div class="clothing-item" data-type="shoes" data-id="shoes3">
+                            <div class="clothing-image">
+                                <img src="images/duramos-azul.jpeg" alt="Tênis Adidas Azul" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTUwIiBoZWlnaHQ9IjE1MCIgdmlld0JveD0iMCAwIDE1MCAxNTAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIxNTAiIGhlaWdodD0iMTUwIiBmaWxsPSIjMDA2NmNjIi8+Cjx0ZXh0IHg9Ijc1IiB5PSI3NSIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjE0IiBmaWxsPSIjZmZmIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkeT0iLjNlbSI+QWRpZGFzIEF6dWw8L3RleHQ+Cjwvc3ZnPg=='">
+                            </div>
+                            <div class="clothing-info">
+                                <p class="clothing-name">Tênis Adidas Azul</p>
+                                <span class="price">R$ 249,90</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="try-on-section">
+                <button class="try-on-btn" id="tryOnBtn" disabled>
+                    <span class="btn-text">Experimentar Roupas</span>
+                    <div class="loading-spinner" style="display: none;"></div>
+                </button>
+            </section>
+
+            <section class="result-section" id="resultSection" style="display: none;">
+                <h2>Resultado do Provador Virtual</h2>
+                <div class="result-container">
+                    <div class="result-image">
+                        <img id="resultImage" alt="Resultado do provador virtual">
+                    </div>
+                    <div class="result-actions">
+                        <button class="btn-secondary" id="tryAgainBtn">Tentar Novamente</button>
+                        <button class="btn-primary" id="saveResultBtn">Salvar Resultado</button>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 MirrorFit. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
